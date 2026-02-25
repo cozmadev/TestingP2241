@@ -59,6 +59,7 @@ public class FormTest {
         formPom.setHobbies(HOBBY);
         formPom.setState(STATE);
         formPom.setCity(CITY);
+        formPom.pause(1000);
         formPom.clickSubmit();
 
         String actualName = formPom.getTableData("Student Name");
