@@ -29,8 +29,8 @@ public class FormTest {
 
     @BeforeMethod
     public void beforeMethod() throws MalformedURLException {
-        driver = Driver.getRemoteDriver();
-        // driver = Driver.getAutoLocalDriver();
+        // driver = Driver.getRemoteDriver();
+        driver = Driver.getAutoLocalDriver();
         driver.manage().window().maximize();
     }
 
@@ -63,9 +63,22 @@ public class FormTest {
 
         String actualName = formPom.getTableData("Student Name");
         Assert.assertEquals(actualName, FIRST_NAME + " " + LAST_NAME);
+        String actualEmail = formPom.getTableData("Student Email");
+        Assert.assertEquals(actualEmail, EMAIL);
+        String actualGender = formPom.getTableData("Gender");
+        Assert.assertEquals(actualGender, GENDER);
+        String actualMobile = formPom.getTableData("Mobile");
+        Assert.assertEquals(actualMobile, NUMBER);
+        String actualSubject = formPom.getTableData("Subjects");
+        Assert.assertEquals(actualSubject, SUBJECT);
+        String actualHobbies = formPom.getTableData("Hobbies");
+        Assert.assertEquals(actualHobbies, HOBBY);
+        String actualStateAndCity = formPom.getTableData("State and City");
+        Assert.assertEquals(actualStateAndCity, STATE + " " + CITY);
 
         System.out.println("---FINISH TEST---");
-        // formPom.pause(10000);
+        // bbs-md
+        formPom.pause(10000);
     }
 
     @AfterMethod
