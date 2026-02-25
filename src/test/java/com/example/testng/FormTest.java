@@ -29,8 +29,8 @@ public class FormTest {
 
     @BeforeMethod
     public void beforeMethod() throws MalformedURLException {
-        // driver = Driver.getRemoteDriver();
-        driver = Driver.getAutoLocalDriver();
+        driver = Driver.getRemoteDriver();
+        // driver = Driver.getAutoLocalDriver();
         driver.manage().window().maximize();
     }
 
@@ -78,7 +78,7 @@ public class FormTest {
 
         System.out.println("---FINISH TEST---");
         // bbs-md
-        formPom.pause(10000);
+        formPom.pause(5000);
     }
 
     @AfterMethod
