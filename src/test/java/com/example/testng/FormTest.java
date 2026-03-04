@@ -2,6 +2,8 @@ package com.example.testng;
 
 import java.net.MalformedURLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -14,8 +16,10 @@ import com.example.utils.Driver;
 public class FormTest {
 
     public static WebDriver driver;
-    static public String URL = "https://demoqa.com/";
 
+    private static final Logger logger = LogManager.getLogger(FormTest.class);
+
+    static public String URL = "https://demoqa.com/";
     static public String FIRST_NAME = "Cozma";
     static public String LAST_NAME = "Vasile";
     static public String EMAIL = "vcozma06@gmail.com";
@@ -32,13 +36,17 @@ public class FormTest {
         driver = Driver.getRemoteDriver();
         // driver = Driver.getAutoLocalDriver();
         driver.manage().window().maximize();
+
+        logger.info("Before Method");
     }
 
-    @SuppressWarnings("null")
+    // @SuppressWarnings("null")
     @Test(invocationCount = 1)
     public void formTest() {
         // demoqa.com
-        System.out.println("\n---START TEST---\n");
+        // System.out.println("\n---START TEST---\n");
+
+        logger.info("Test Method");
         driver.get(URL);
 
         FormPom formPom = new FormPom(driver);
@@ -77,13 +85,15 @@ public class FormTest {
         String actualStateAndCity = formPom.getTableData("State and City");
         Assert.assertEquals(actualStateAndCity, STATE + " " + CITY);
 
-        System.out.println("---FINISH TEST---");
+        // System.out.println("---FINISH TEST---");
         // bbs-md
         formPom.pause(5000);
     }
 
     @AfterMethod
     public void afterMethod() {
+
+        logger.info("After Method");
         driver.quit();
     }
 }
